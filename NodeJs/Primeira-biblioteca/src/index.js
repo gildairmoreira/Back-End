@@ -16,7 +16,7 @@ function extraiLinks(texto)
     [ captura[ 1 ] ]:
       [ captura[ 2 ] ]
   }))
-  return resultados
+  return resultados.length !== 0 ? resultados : 'não há textos no arquivo'
 }
 
 //assync/await
@@ -26,7 +26,7 @@ async function pegaArquivo(caminhoDoArquivo)
   {
     const encoding = 'utf8';
     const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-    console.log(extraiLinks(texto))
+    return extraiLinks(texto)
 
   } catch (erro)
   {
