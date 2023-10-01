@@ -10,6 +10,7 @@ function User(nome,email) {
 //const novoUser = new User('GILDAIR', 'gildair@g.com')
 //console.log(novoUser.exibirInfos())
 
+
 function Admin(role) {
   User.call(this, 'GILDAIR', 'gildair@g.com')
   this.role = role || 'estudante'
