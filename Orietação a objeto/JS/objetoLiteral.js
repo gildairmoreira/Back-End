@@ -1,22 +1,29 @@
 const user = {
-  nome:"Gildair",
+  nome: "Juliana",
   email: "j@j.com",
-  nascimento: "2021/01/04",
-  role:"admin",
+  nascimento: "2021/01/01",
+  role: "estudante",
   ativo: true,
-  exibirInfos:function () {
+  exibirInfos: function() {
     console.log(this.nome, this.email)
   }
 }
+
 const admin = {
-  nome:"maria",
+  nome: "Mariana",
   email: "m@m.com",
-  role:"admin",
-  criaCurso:function () {
-    console.log('curso criado')
+  role: "admin",
+  criarCurso() {
+    console.log('curso criado!')
   }
 }
 
-Object.setPrototypeOf(admin,user)
-admin.criaCurso()
+Object.setPrototypeOf(admin, user)
+admin.criarCurso()
 admin.exibirInfos()
+
+
+
+
+
+
