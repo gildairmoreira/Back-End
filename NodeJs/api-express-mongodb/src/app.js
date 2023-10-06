@@ -1,6 +1,6 @@
 import express from 'express';
 import conectaNaDataBase from './config/dbConnect.js';
-import livro from './models/Livro.js';
+import routes from './Routes/index.js';
 
 
 const conexao = await conectaNaDataBase()
@@ -15,21 +15,8 @@ conexao.once("open", () => {
 
 
 const app = express();
-app.use(express.json())
 
-
-
-
-app.get('/', (req, res) =>
-{
-  res.status(200).send('Cueso de nodeJS')
-})
-
-app.get('/livros', async (req, res) =>
-{
-  const listalivros = await livro.find({})
-  res.status(200).json(listalivros)
-})
+routes(app)
 
 app.get('/livros/:id', (req, res) =>
 {
