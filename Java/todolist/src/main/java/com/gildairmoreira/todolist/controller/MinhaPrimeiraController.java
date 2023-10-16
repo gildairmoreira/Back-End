@@ -7,5 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MinhaPrimeiraController {
   public String primeiraMensagem() {
     return "Funcionou";
+    
   }
 }
