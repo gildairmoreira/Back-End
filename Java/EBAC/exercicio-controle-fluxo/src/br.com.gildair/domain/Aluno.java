@@ -74,7 +74,6 @@ public class Aluno implements Comparable<Aluno>{
         return this.nome;
     }
 
-
     /**
      * Usado para comparação entre objetos e verificar se o mesmo é igual
      * @param aluno

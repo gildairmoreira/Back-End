@@ -30,7 +30,6 @@ public class ExemploArrayListAluno {
         System.out.println(lista);
         Collections.sort(lista);
         System.out.println(lista);
-        System.out.println("");
     }
 
     private static void exemploListaSimplesOrdenadaComparatorAluno() {
