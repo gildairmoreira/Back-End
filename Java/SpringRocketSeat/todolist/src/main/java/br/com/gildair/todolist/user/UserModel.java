@@ -1,5 +1,13 @@
 package br.com.gildair.todolist.user;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Data; //Faz GET e SET das variaveis
 // import lombok.Getter; //Faz somente GET das variaveis
 // import lombok.Setter; //Faz somente SET das variaveis
@@ -7,10 +15,19 @@ import lombok.Data; //Faz GET e SET das variaveis
 /* para não ter que declarar cada get e set usa-se a lib Lombok  */
 
 @Data
+@Entity(name = "tb-users")
 public class UserModel {
+
+    @Id
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
+
     private String username;
     private String name;
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     // getters e setters
     
