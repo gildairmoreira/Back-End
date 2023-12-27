@@ -1,6 +1,7 @@
 package br.com.gildair.todolist.filter;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -19,10 +20,21 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
                 //Pegar a autenticação (Usuario e senha)
                 var authorization = request.getHeader("Authorization");
+                
+                var authEncoded = authorization.substring("Basic".length()).trim();
+
+                byte[] authDecoded = Base64.getDecoder().decode(authEncoded);
+
+                var authString = new String(authDecoded);
+                
+                //["gildairmoreira", "12345"]
+                String[] credentials = authString.split(":" );
+                String userName = credentials[0];
+                String password = credentials[1];
+                
                 System.out.println("Authorization");
-                System.out.println(authorization);
-
-
+                System.out.println(userName);
+                System.out.println(password);
 
                 //Validar Usuario
 
