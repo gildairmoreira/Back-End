@@ -31,18 +31,21 @@ public class TaskController {
         taskModel.setIdUser((UUID) idUser);
 
         var currentDate = LocalDateTime.now();
+        // 10/11/2023 - Current
+        // 10/10/2023 - startAt
         if (currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("A data de Inicio / data de Termino deve ser maior que a data atual");
+                    .body("A data de início / data de término deve ser maior do que a data atual");
         }
 
         if (taskModel.getStartAt().isAfter(taskModel.getEndAt())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("A data de inicío deve ser menor que a data de Término");
+                    .body("A data de início deve ser menor do que a data de término");
         }
 
         var task = this.taskRepository.save(taskModel);
         return ResponseEntity.status(HttpStatus.OK).body(task);
+
     }
 
     @GetMapping("/")
@@ -52,24 +55,29 @@ public class TaskController {
         return tasks;
     }
 
+    // http://localhost:8080/tasks/892347823-cdfgcvb-832748234
     @PutMapping("/{id}")
-    public ResponseEntity update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
-
+    public ResponseEntity update(@RequestBody TaskModel taskModel, @PathVariable UUID id,
+            HttpServletRequest request) {
         var task = this.taskRepository.findById(id).orElse(null);
 
         if (task == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Tarefa não encontrada");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Tarefa não encontrada");
         }
 
         var idUser = request.getAttribute("idUser");
+
         if (!task.getIdUser().equals(idUser)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Usuario não tem Permisão para alterar essa tarrefa");
+                    .body("Usuário não tem permissão para alterar essa tarefa");
         }
 
         Utils.copyNonNullProperties(taskModel, task);
+
         var taskUpdated = this.taskRepository.save(task);
-        return ResponseEntity.ok().body(taskUpdated);
+        return ResponseEntity.ok().body(this.taskRepository.save(taskUpdated));
+
     }
 
 }

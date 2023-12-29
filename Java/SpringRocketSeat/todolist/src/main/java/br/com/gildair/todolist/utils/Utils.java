@@ -16,6 +16,7 @@ public class Utils {
 
     public static String[] getNullPropertyNames(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
+
         PropertyDescriptor[] pds = src.getPropertyDescriptors();
 
         Set<String> emptyNames = new HashSet<>();
@@ -26,6 +27,7 @@ public class Utils {
                 emptyNames.add(pd.getName());
             }
         }
+
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
     }

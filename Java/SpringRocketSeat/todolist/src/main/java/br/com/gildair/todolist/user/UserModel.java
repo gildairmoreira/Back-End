@@ -9,11 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Data; //Faz GET e SET das variaveis
-// import lombok.Getter; //Faz somente GET das variaveis
-// import lombok.Setter; //Faz somente SET das variaveis
-
-/* para não ter que declarar cada get e set usa-se a lib Lombok  */
+import lombok.Data;
 
 @Data
 @Entity(name = "tb_users")
@@ -30,8 +26,5 @@ public class UserModel {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-
-    // getters e setters
-    
 
 }
