@@ -1,5 +1,5 @@
 /* 
- * HelloWord = Nome da classe
+ * HelloWorld = Nome da classe
  * public = tipo de acesso da classe
  * class = tipo da classe
  */
