@@ -1,3 +1,5 @@
+package br.com.gildairoo.screenmatch.principal;
+
 import br.com.gildairoo.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.gildairoo.screenmatch.calculos.FiltroRecomendacao;
 import br.com.gildairoo.screenmatch.modelos.Episodio;
